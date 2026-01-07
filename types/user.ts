@@ -1,5 +1,6 @@
+// src/types/user.ts
 export interface User {
-	name: string;
-	email: string;
-	isAdmin?: boolean;
+  email: string;
+  name: string;
+  isAdmin: boolean;
 }

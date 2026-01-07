@@ -1,20 +1,26 @@
-import "./globals.css";
-import type { Metadata } from "next";
+'use client';
 
-export const metadata: Metadata = {
-  title: "Evacum",
-  description: "Next.js + TypeScript + Tailwind App",
-};
+import './globals.css';
+import { Providers } from './providers';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import CartSidebar from '../components/CartSidebar';
+import { useState } from 'react';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const [cartOpen, setCartOpen] = useState(false);
+
   return (
     <html lang="en">
-      <body className="bg-zinc-50 text-zinc-900 dark:bg-black dark:text-zinc-50">
-        {children}
+      <body>
+        <Providers>
+          <div className="flex flex-col min-h-screen">
+            <Header onCartClick={() => setCartOpen(true)} />
+            <CartSidebar isOpen={cartOpen} onClose={() => setCartOpen(false)} />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+        </Providers>
       </body>
     </html>
   );

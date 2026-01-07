@@ -1,63 +1,138 @@
+// src/context/CartContext.tsx
 'use client';
 
-import { createContext, useState, ReactNode } from 'react';
+import {
+  createContext,
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  type ReactNode,
+} from 'react';
 import { Product } from '../types/product';
-
-interface CartItem extends Product {
-	quantity: number;
-}
+import { CartItem } from '../types/cart';
 
 interface CartContextType {
-	cart: CartItem[];
-	addToCart: (product: Product) => void;
-	removeFromCart: (id: number) => void;
-	updateQuantity: (id: number, quantity: number) => void;
-	clearCart: () => void;
-	total: number;
+  cart: CartItem[];
+  addToCart: (product: Product) => void;
+  removeFromCart: (id: number) => void;
+  updateQuantity: (id: number, quantity: number) => void;
+  clearCart: () => void;
+  total: number;
+  itemCount: number;
 }
+
+const STORAGE_KEY = 'evacumtech_cart';
 
 export const CartContext = createContext<CartContextType | null>(null);
 
-export const CartProvider = ({ children }: { children: ReactNode }) => {
-	const [cart, setCart] = useState<CartItem[]>(() => {
-		if (typeof window === 'undefined') return [];
-		const saved = localStorage.getItem('cart');
-		return saved ? (JSON.parse(saved) as CartItem[]) : [];
-	});
+export function CartProvider({ children }: { children: ReactNode }) {
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const [isInitialized, setIsInitialized] = useState(false);
 
-	const sync = (data: CartItem[]) => {
-		setCart(data);
-		localStorage.setItem('cart', JSON.stringify(data));
-	};
+  // Load cart from localStorage on mount
+  useEffect(() => {
+    const loadCart = () => {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          setCart(Array.isArray(parsed) ? parsed : []);
+        }
+      } catch (error) {
+        console.error('Failed to load cart:', error);
+      } finally {
+        setIsInitialized(true);
+      }
+    };
 
-	const addToCart = (product: Product) => {
-		const exists = cart.find(i => i.id === product.id);
-		const updated = exists
-			? cart.map(i => i.id === product.id ? { ...i, quantity: i.quantity + 1 } : i)
-			: [...cart, { ...product, quantity: 1 }];
+    loadCart();
+  }, []);
 
-		sync(updated);
-	};
+  // Save cart to localStorage whenever it changes
+  useEffect(() => {
+    if (isInitialized) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+      } catch (error) {
+        console.error('Failed to save cart:', error);
+      }
+    }
+  }, [cart, isInitialized]);
 
-	const removeFromCart = (id: number) => {
-		sync(cart.filter(i => i.id !== id));
-	};
+  const addToCart = useCallback((product: Product): void => {
+    setCart((prev) => {
+      const existing = prev.find((item) => item.id === product.id);
 
-	const updateQuantity = (id: number, quantity: number) => {
-		if (quantity <= 0) return removeFromCart(id);
-		sync(cart.map(i => i.id === id ? { ...i, quantity } : i));
-	};
+      if (existing) {
+        if (existing.quantity >= product.stock) {
+          alert(`Only ${product.stock} items available in stock`);
+          return prev;
+        }
+        return prev.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
 
-	const clearCart = () => {
-		setCart([]);
-		localStorage.removeItem('cart');
-	};
+      return [...prev, { ...product, quantity: 1 }];
+    });
+  }, []);
 
-	const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+  const removeFromCart = useCallback((id: number): void => {
+    setCart((prev) => prev.filter((item) => item.id !== id));
+  }, []);
 
-	return (
-		<CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart, total }}>
-			{children}
-		</CartContext.Provider>
-	);
-};
+  const updateQuantity = useCallback(
+    (id: number, quantity: number): void => {
+      if (quantity <= 0) {
+        removeFromCart(id);
+        return;
+      }
+
+      setCart((prev) =>
+        prev.map((item) => {
+          if (item.id === id) {
+            if (quantity > item.stock) {
+              alert(`Only ${item.stock} items available in stock`);
+              return item;
+            }
+            return { ...item, quantity };
+          }
+          return item;
+        })
+      );
+    },
+    [removeFromCart]
+  );
+
+  const clearCart = useCallback((): void => {
+    setCart([]);
+  }, []);
+
+  const total = useMemo(
+    () => cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
+    [cart]
+  );
+
+  const itemCount = useMemo(
+    () => cart.reduce((count, item) => count + item.quantity, 0),
+    [cart]
+  );
+
+  const value: CartContextType = useMemo(
+    () => ({
+      cart,
+      addToCart,
+      removeFromCart,
+      updateQuantity,
+      clearCart,
+      total,
+      itemCount,
+    }),
+    [cart, addToCart, removeFromCart, updateQuantity, clearCart, total, itemCount]
+  );
+
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+}
