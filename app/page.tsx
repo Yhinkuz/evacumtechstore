@@ -67,14 +67,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-16">
+      <section className="bg-gradient-to-r from-green-600 to-green-700 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-4">Ready to Upgrade Your Tech?</h2>
-          <p className="text-xl mb-8 text-blue-100">
+          <p className="text-xl mb-8 text-green-100">
             Discover the latest gadgets at unbeatable prices
           </p>
           <Link href="/products">
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition text-lg">
+            <button className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition text-lg">
               Shop Now
             </button>
           </Link>
