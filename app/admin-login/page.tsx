@@ -34,7 +34,7 @@ export default function AdminLoginPage() {
       <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
         <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Admin Portal</h2>
 
-        <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg flex items-start gap-2 text-blue-700">
+        <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg flex items-start gap-2 text-green-700">
           <Info size={20} className="mt-0.5 flex-shrink-0" />
           <div className="text-sm">
             <p className="font-semibold">Demo Admin Credentials:</p>

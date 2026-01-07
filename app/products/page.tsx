@@ -36,7 +36,7 @@ export default function ProductsPage() {
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-green-500"
             >
               <option value="all">All Categories</option>
               <option value="electronics">Electronics</option>
@@ -50,7 +50,7 @@ export default function ProductsPage() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-green-500"
             >
               <option value="name">Name (A-Z)</option>
               <option value="price-low">Price (Low to High)</option>

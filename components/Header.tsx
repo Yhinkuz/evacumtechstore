@@ -25,7 +25,7 @@ const Header = ({ onCartClick }: HeaderProps) => {
   };
 
   return (
-    <header className="bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg sticky top-0 z-50">
+    <header className="bg-gradient-to-r from-green-600 to-green-700 text-white shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center space-x-8">
           <Link href="/">
@@ -95,7 +95,7 @@ const Header = ({ onCartClick }: HeaderProps) => {
               <Link href="/login" className="hover:underline px-3 py-1 rounded hover:bg-white/10 transition">
                 Login
               </Link>
-              <Link href="/register" className="bg-white text-blue-600 px-3 py-1 rounded hover:bg-blue-50 transition font-semibold">
+              <Link href="/register" className="bg-white text-green-600 px-3 py-1 rounded hover:bg-green-50 transition font-semibold">
                 Register
               </Link>
             </div>

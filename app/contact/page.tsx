@@ -33,7 +33,7 @@ export default function ContactPage() {
 
           <div className="space-y-4">
             <div className="flex items-start gap-4 p-4 bg-blue-50 rounded-lg">
-              <Mail className="text-blue-600 mt-1" size={24} />
+              <Mail className="text-green-600 mt-1" size={24} />
               <div>
                 <h3 className="font-semibold mb-1">Email</h3>
                 <p className="text-gray-600">support@evacumtechstore.com</p>
@@ -96,13 +96,13 @@ export default function ContactPage() {
               placeholder="Message"
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="w-full border p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border p-3 rounded-lg outline-none focus:ring-2 focus:ring-green-500"
               rows={5}
               required
             />
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-semibold flex items-center justify-center gap-2"
+              className="w-full bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-blue-200 transition font-semibold flex items-center justify-center gap-2"
             >
               <Send size={20} />
               Send Message

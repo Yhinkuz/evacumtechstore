@@ -9,7 +9,7 @@ export default function AboutPage() {
         </p>
 
         <div className="bg-blue-50 p-6 rounded-lg">
-          <h2 className="text-2xl font-bold mb-4 text-blue-900">Our Mission</h2>
+          <h2 className="text-2xl font-bold mb-4 text-green-900">Our Mission</h2>
           <p>
             We are committed to providing our customers with the latest technology products at competitive prices,
             backed by excellent customer service and fast delivery across Nigeria.

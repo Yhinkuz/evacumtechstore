@@ -50,7 +50,7 @@ export default function LoginPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
               placeholder="your@email.com"
               required
             />
@@ -62,7 +62,7 @@ export default function LoginPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
               placeholder="••••••••"
               required
             />
@@ -71,7 +71,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition disabled:bg-blue-300"
+            className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-200 transition disabled:bg-blue-300"
           >
             {loading ? 'Signing In...' : 'Sign In'}
           </button>
@@ -80,11 +80,11 @@ export default function LoginPage() {
         <div className="mt-6 text-center space-y-2">
           <p className="text-sm text-gray-600">
             Don&apos;t have an account?{' '}
-            <Link href="/register" className="text-blue-600 font-semibold hover:underline">Register</Link>
+            <Link href="/register" className="text-green-600 font-semibold hover:underline">Register</Link>
           </p>
           <p className="text-sm text-gray-600">
             Are you an admin?{' '}
-            <Link href="/admin-login" className="text-red-600 font-semibold hover:underline">Admin Login</Link>
+            <Link href="/admin-login" className="text-blue-600 font-semibold hover:underline">Admin Login</Link>
           </p>
         </div>
       </div>

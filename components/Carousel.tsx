@@ -66,7 +66,7 @@ export default function Carousel() {
           <h2 className="text-4xl md:text-6xl font-bold mb-4">Welcome to EvacumTechStore</h2>
           <p className="text-xl md:text-2xl mb-8">Your Premium Tech Destination</p>
           <Link href="/products">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition">
+            <button className="bg-green-600 hover:bg-blue-200 text-white px-8 py-3 rounded-lg text-lg font-semibold transition">
               Shop Now
             </button>
           </Link>

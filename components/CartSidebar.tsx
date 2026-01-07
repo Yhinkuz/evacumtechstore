@@ -23,7 +23,7 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
       <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col">
         <div className="flex items-center justify-between p-6 border-b">
           <div className="flex items-center gap-2">
-            <ShoppingBag className="text-blue-600" size={24} />
+            <ShoppingBag className="text-green-600" size={24} />
             <h2 className="text-2xl font-bold">Shopping Cart</h2>
           </div>
           <button onClick={onClose} className="hover:bg-gray-100 p-2 rounded-lg transition" aria-label="Close cart">
@@ -36,7 +36,7 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
             <ShoppingBag size={64} className="text-gray-300 mb-4" />
             <p className="text-xl text-gray-500 mb-2">Your cart is empty</p>
             <p className="text-sm text-gray-400 mb-4">Add some products to get started</p>
-            <button onClick={onClose} className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+            <button onClick={onClose} className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-blue-200 transition">
               Continue Shopping
             </button>
           </div>
@@ -52,7 +52,7 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
 
                     <div className="flex-1 min-w-0">
                       <h3 className="font-semibold text-sm mb-1 line-clamp-1">{item.name}</h3>
-                      <p className="text-blue-600 font-bold">₦{item.price.toLocaleString()}</p>
+                      <p className="text-green-600 font-bold">₦{item.price.toLocaleString()}</p>
 
                       <div className="flex items-center gap-2 mt-2">
                         <button
@@ -96,10 +96,10 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
             <div className="border-t p-6 space-y-4 bg-gray-50">
               <div className="flex justify-between text-xl font-bold">
                 <span>Total:</span>
-                <span className="text-blue-600">₦{total.toLocaleString()}</span>
+                <span className="text-green-600">₦{total.toLocaleString()}</span>
               </div>
 
-              <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+              <button className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-200 transition">
                 Proceed to Checkout
               </button>
 

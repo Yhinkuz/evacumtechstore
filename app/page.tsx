@@ -55,7 +55,7 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 py-12">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-3xl font-bold">Featured Products</h2>
-          <Link href="/products" className="text-blue-600 hover:text-blue-700 font-semibold">
+          <Link href="/products" className="text-green-600 hover:text-blue-200 font-semibold">
             View All →
           </Link>
         </div>

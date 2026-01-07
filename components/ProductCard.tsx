@@ -45,7 +45,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         )}
 
         <div className="flex items-center justify-between mb-3">
-          <span className="text-2xl font-bold text-blue-600">₦{product.price.toLocaleString()}</span>
+          <span className="text-2xl font-bold text-green-600">₦{product.price.toLocaleString()}</span>
         </div>
 
         <div className="flex items-center justify-between">
@@ -59,7 +59,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition ${
               product.stock === 0
                 ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                : 'bg-blue-600 text-white hover:bg-blue-700'
+                : 'bg-green-600 text-white hover:bg-blue-200'
             }`}
           >
             <ShoppingCart size={18} />

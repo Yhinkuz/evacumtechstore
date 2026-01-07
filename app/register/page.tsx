@@ -38,7 +38,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
         <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Create Account</h2>
 
@@ -56,7 +56,7 @@ export default function RegisterPage() {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
               placeholder="John Doe"
               required
             />
@@ -68,7 +68,7 @@ export default function RegisterPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
               placeholder="your@email.com"
               required
             />
@@ -80,7 +80,7 @@ export default function RegisterPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
               placeholder="••••••••"
               required
             />
@@ -93,7 +93,7 @@ export default function RegisterPage() {
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
               placeholder="••••••••"
               required
             />
@@ -102,7 +102,7 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition disabled:bg-blue-300"
+            className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-200 transition disabled:bg-blue-300"
           >
             {loading ? 'Creating Account...' : 'Create Account'}
           </button>
@@ -110,7 +110,7 @@ export default function RegisterPage() {
 
         <p className="mt-6 text-center text-gray-600">
           Already have an account?{' '}
-          <Link href="/login" className="text-blue-600 font-semibold hover:underline">Sign In</Link>
+          <Link href="/login" className="text-green-600 font-semibold hover:underline">Sign In</Link>
         </p>
       </div>
     </div>
